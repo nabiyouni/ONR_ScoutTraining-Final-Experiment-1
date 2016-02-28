@@ -11,9 +11,23 @@ private var players = new Array();
 
 public var AR = false;
 
+/*function setCamera (position: String) {
+	for (var camera : Camera in Camera.allCameras) {
+		if (camera.name.Contains(position)) {
+			camera.enabled = true;
+		}
+		else {
+			camera.enabled = false;
+		}
+	}
+}*/
+//Mahdi: I don't want binocular camera to be disabled
 function setCamera (position: String) {
 	for (var camera : Camera in Camera.allCameras) {
 		if (camera.name.Contains(position)) {
+			camera.enabled = true;
+		}
+		else if (camera.name.Contains("Binocular")||camera.name.Contains("binocular")) {
 			camera.enabled = true;
 		}
 		else {
@@ -23,14 +37,9 @@ function setCamera (position: String) {
 }
 
 function Start() {
-	//var asset:TextAsset = Resources.Load("config");
-	
-	
-	//print (Application.dataPath);
-	
 	if (!AR) { 
-		var debugger:Debugger = gameObject.GetComponent("Debugger");
-		debugger.setText(Application.dataPath);
+		var debugger:Logger = gameObject.GetComponent(Logger);
+		//debugger.setText(Application.dataPath);
 		
 		var asset:String;
 		
@@ -57,9 +66,9 @@ function Start() {
 		        }
 		    }
 	    
-			debugger.setText("Found external config");
+			//debugger.setText("Found external config");
 		} else {
-			debugger.setText("Using internal config");
+			//debugger.setText("Using internal config");
 		}
 	} else {
 		setCamera("AR");

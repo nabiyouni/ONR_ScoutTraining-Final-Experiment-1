@@ -10,7 +10,7 @@ private var center = 118;
 private var mdown = false;
 private var t1 : Rect = Rect (caveSize/2 - avatarSize/2,caveSize/2 - avatarSize/2,avatarSize,avatarSize);
 
-public var cave : GameObject;
+public var cave : GameObject; 
 public var caveWidth = 2.5;
 
 private var windowRect : Rect = Rect (Screen.width - 220, Screen.height - 150, 200, 130);
@@ -56,6 +56,14 @@ function viewCamera (position: String) {
 			camera.depth = 1;
 			camera.enabled = true;
 		}
+		//else {
+		//	camera.depth = 0;
+		//	camera.enabled = false;
+		//}
+		
+		else if (camera.name.Contains("Binocular")||camera.name.Contains("binocular")) {
+			camera.enabled = true;
+		}
 		else {
 			camera.depth = 0;
 			camera.enabled = false;
@@ -68,7 +76,7 @@ function cameraChooser (windowID: int) {
 }
 
 function OnGUI () {
-	GUI.Window (0, windowSize, caveSim, "CAVE View");
+	//GUI.Window (0, windowSize, caveSim, "CAVE View");
 	//GUI.Window (1, windowRect, cameraChooser, "Camera Select");
 	GUI.Window (1, windowRect, cameraChooser, "Camera Select");
 }

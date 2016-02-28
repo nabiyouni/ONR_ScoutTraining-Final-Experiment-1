@@ -19,7 +19,7 @@ function setCamera (position: String) {
 }
 
 function Start() {
-	setCamera("ServerView");
+	//setCamera("ServerView");
 	
 //	gameObject.AddComponent(MouseLook);
 //	gameObject.AddComponent(FPSInputController);

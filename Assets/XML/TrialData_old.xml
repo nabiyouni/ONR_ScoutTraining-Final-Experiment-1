@@ -1,0 +1,12 @@
+<Trial id="0">
+
+	<beacon x = "-75" y = "0" z = "-70" color="red" />
+	<beacon x = "-50" y = "0" z = "-10" color="red" />
+	<beacon x = "-10" y = "0" z = "-10" color="red" />
+	<beacon x = "-5" y = "-5" z = "-70" color="red" />
+	<beacon x = "55" y = "20" z = "-40" color="red" />
+	<beacon x = "40" y = "-10" z = "-115" color="red" />
+
+
+
+</Trial>

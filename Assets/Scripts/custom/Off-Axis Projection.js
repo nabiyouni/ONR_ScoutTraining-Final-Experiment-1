@@ -8,17 +8,57 @@
 #pragma strict
 @script ExecuteInEditMode()
  
+private var useMain : boolean = false;
 private var defaultObject : GameObject;
+private var projectionScreen : GameObject;
 
-public var projectionScreen : GameObject;
+public var mainProjectionScreen : GameObject;
+//public var altProjectionScreen : GameObject;
 public var estimateViewFrustum : boolean = true;
 
+function OnEnable() {
+   //if (altProjectionScreen != null) {
+   //   WandEventManager.OnButton1 += networkCallSwap;
+   //}
+}
+
+function Update () {
+
+	if(Input.GetKeyDown(KeyCode.Z)) {
+		networkCallSwap();
+	}
+	
+	
+}
+
 function Start() {
+	//Mahdi: Default view for the CAVE walls when the project starts.
    defaultObject = GameObject.Find("Wall."+gameObject.name.Split('.'[0])[1]);
 
-   if (projectionScreen == null) {
+   if (mainProjectionScreen == null) {
+      mainProjectionScreen = defaultObject;
       projectionScreen = defaultObject;
    }
+   
+   projectionScreen = mainProjectionScreen;
+}
+
+function networkCallSwap() {
+	if(networkView != null) {
+		networkView.RPC("swapProjection", RPCMode.AllBuffered);
+	}
+}
+
+@RPC
+function swapProjection() {
+   //if (useMain) {
+      projectionScreen = mainProjectionScreen;
+      //Debug.Log("Switched");
+   //} else {
+   //   projectionScreen = altProjectionScreen;
+   //}
+
+   useMain = !useMain;
 }
  
 function LateUpdate() {
@@ -136,7 +176,7 @@ function LateUpdate() {
       tm[3,1] = 0.0; 
       tm[3,2] = 0.0; 
       tm[3,3] = 1.0;            
- 
+ 		
       // set matrices
       camera.projectionMatrix = p * rm * tm;
       camera.worldToCameraMatrix = Matrix4x4.identity; 
@@ -149,6 +189,7 @@ function LateUpdate() {
          var q : Quaternion;
          q.SetLookRotation((0.5 * (pb + pc) - pe), vu); 
              // look at center of screen
+         //Mahdi: Test for world rotatio for world latency
          camera.transform.rotation = q;
  
          // set fieldOfView to a conservative estimate 
@@ -165,5 +206,6 @@ function LateUpdate() {
                Mathf.Atan(((pb-pa).magnitude + (pc-pa).magnitude) / va.magnitude);
          }      
       }
+      
    }
 }

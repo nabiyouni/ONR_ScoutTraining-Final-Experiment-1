@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\custom\Off-Axis Projection.js">
+    <Files>
+      <File FileName="Assets\Plugins\TrackingManager_v2.cs" Line="707" Column="20" />
+      <File FileName="Assets\Plugins\ActivateBinocular.cs" Line="66" Column="4" />
+      <File FileName="Assets\Scripts\custom\Off-Axis Projection.js" Line="181" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="C:\Users\Mahdi\Dropbox\3DI\ONR\AR-VR Simulation 01\Assets\Scripts\custom\Crate.js" line="67" />
+      <Breakpoint file="C:\Users\Mahdi\Dropbox\3DI\ONR\AR-VR Simulation 01\Assets\Scripts\custom\Crate.js" line="169" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
